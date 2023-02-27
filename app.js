@@ -10,10 +10,11 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const limiter = require('./middlewares/limiter');
 const errorHandler = require('./middlewares/errorHandler');
 const cors = require('./middlewares/cors');
+const { DEFAULT_CONFIG } = require('./utils/constants');
 
 const {
-  PORT = 3000,
-  DB_URL = 'mongodb://127.0.0.1:27017/bitfilmsdb',
+  PORT = DEFAULT_CONFIG.PORT,
+  DB_URL = DEFAULT_CONFIG.DB_URL,
 } = process.env;
 
 const app = express();
@@ -22,11 +23,12 @@ mongoose.connect(DB_URL)
   .then(() => {
     console.log(`App is connected to database on URL ${DB_URL}`);
   })
-  .catch(() => {
+  .catch((err) => {
     console.log(`Error connecting to database on URL ${DB_URL}`);
+    console.error(err);
   });
 
-app.use(helmet);
+app.use(helmet());
 app.use(requestLogger);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
