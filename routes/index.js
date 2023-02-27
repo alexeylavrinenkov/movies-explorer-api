@@ -6,8 +6,8 @@ const { loginValidator, createUserValidator } = require('../middlewares/validato
 const movieRouter = require('./movies');
 const userRouter = require('./users');
 
-router.use('/signin', loginValidator, login);
-router.use('/signup', createUserValidator, createUser);
+router.post('/signin', loginValidator, login);
+router.post('/signup', createUserValidator, createUser);
 
 router.use(auth);
 router.use('/users', userRouter);
