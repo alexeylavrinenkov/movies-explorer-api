@@ -82,11 +82,11 @@ const getMe = (req, res, next) => {
 };
 
 const updateMe = (req, res, next) => {
-  const { name, email, password } = req.body;
+  const { name, email } = req.body;
 
   User.findByIdAndUpdate(
     req.user._id,
-    { name, email, password },
+    { name, email },
     { new: true, runValidators: true },
   )
     .then((user) => {
