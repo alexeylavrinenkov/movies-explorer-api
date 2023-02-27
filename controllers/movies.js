@@ -17,17 +17,8 @@ const getMovies = (req, res, next) => {
 
 const createMovie = (req, res, next) => {
   const {
-    country,
-    director,
-    duration,
-    year,
-    description,
-    image,
-    trailerLink,
-    thumbnail,
-    movieId,
-    nameRU,
-    nameEN,
+    country, director, duration, year, description, image,
+    trailerLink, thumbnail, movieId, nameRU, nameEN,
   } = req.body;
   const owner = req.user._id;
 
@@ -59,7 +50,7 @@ const createMovie = (req, res, next) => {
 };
 
 const deleteMovie = (req, res, next) => {
-  const { movieId } = req.params;
+  const { _id: movieId } = req.params;
 
   Movie.findById(movieId)
     .then((movie) => {
@@ -67,15 +58,15 @@ const deleteMovie = (req, res, next) => {
         throw new NotFoundError(ERROR_MESSAGES.MOVIE_NOT_FOUND);
       }
 
-      if (movie.owner.toString !== req.user._id) {
+      if (movie.owner.toString() !== req.user._id) {
         throw new ForbiddenError(ERROR_MESSAGES.STRANGER_MOVIE);
       }
 
-      return Movie.findByIdAndRemove(movieId);
-    })
-    .populate('owner')
-    .then((myMovie) => {
-      res.send(myMovie);
+      return Movie.findByIdAndRemove(movieId)
+        .populate('owner')
+        .then((myMovie) => {
+          res.send(myMovie);
+        });
     })
     .catch((err) => {
       if (err.name === 'CastError') {
