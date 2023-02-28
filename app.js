@@ -12,10 +12,7 @@ const errorHandler = require('./middlewares/errorHandler');
 const cors = require('./middlewares/cors');
 const { DEFAULT_CONFIG } = require('./utils/constants');
 
-const {
-  PORT = DEFAULT_CONFIG.PORT,
-  DB_URL = DEFAULT_CONFIG.DB_URL,
-} = process.env;
+const { DB_URL, PORT } = DEFAULT_CONFIG;
 
 const app = express();
 

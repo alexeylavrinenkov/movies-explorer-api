@@ -1,6 +1,8 @@
+const { NODE_ENV, PORT, DB_URL } = process.env;
+
 const DEFAULT_CONFIG = {
-  PORT: 3000,
-  DB_URL: 'mongodb://127.0.0.1:27017/bitfilmsdb',
+  PORT: NODE_ENV === 'production' ? PORT : 3000,
+  DB_URL: NODE_ENV === 'production' ? DB_URL : 'mongodb://127.0.0.1:27017/bitfilmsdb',
 };
 
 const DEV_SECRET_KEY = 'dev-secret-key';
