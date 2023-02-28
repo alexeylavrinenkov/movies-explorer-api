@@ -1,4 +1,6 @@
-const { ALLOWED_CORS, ALLOWED_METHODS } = require('../utils/constants');
+const { DEFAULT_CONFIG } = require('../utils/config');
+
+const { ALLOWED_CORS, ALLOWED_METHODS } = DEFAULT_CONFIG;
 
 module.exports = (req, res, next) => {
   const { origin } = req.headers;

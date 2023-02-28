@@ -10,7 +10,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const limiter = require('./middlewares/limiter');
 const errorHandler = require('./middlewares/errorHandler');
 const cors = require('./middlewares/cors');
-const { DEFAULT_CONFIG } = require('./utils/constants');
+const { DEFAULT_CONFIG } = require('./utils/config');
 
 const { DB_URL, PORT } = DEFAULT_CONFIG;
 

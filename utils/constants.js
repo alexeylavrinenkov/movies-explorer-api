@@ -1,12 +1,3 @@
-const { NODE_ENV, PORT, DB_URL } = process.env;
-
-const DEFAULT_CONFIG = {
-  PORT: NODE_ENV === 'production' ? PORT : 3000,
-  DB_URL: NODE_ENV === 'production' ? DB_URL : 'mongodb://127.0.0.1:27017/bitfilmsdb',
-};
-
-const DEV_SECRET_KEY = 'dev-secret-key';
-
 const LINK_REGEX = /^https?:\/\/(www\.)?[0-9a-zA-Z]+([.|-]{1}[0-9a-zA-Z]+)*\.[0-9a-zA-Z-]+(\/[0-9a-zA-Z\-._~:/?#[\]@!$&'()*+,;=]*#?)?$/;
 
 const ERROR_MESSAGES = {
@@ -25,21 +16,7 @@ const ERROR_MESSAGES = {
   PAGE_NOT_FOUND: 'Страница по указанному маршруту не найдена.',
 };
 
-const ALLOWED_CORS = [
-  'https://movies-explorer.service.nomoredomains.work',
-  'https://api.movies-explorer.site.nomoredomains.work',
-  'http://movies-explorer.service.nomoredomains.work',
-  'http://api.movies-explorer.site.nomoredomains.work',
-  'localhost:3000',
-];
-
-const ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
-
 module.exports = {
-  DEFAULT_CONFIG,
-  DEV_SECRET_KEY,
   LINK_REGEX,
   ERROR_MESSAGES,
-  ALLOWED_CORS,
-  ALLOWED_METHODS,
 };

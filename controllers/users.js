@@ -5,7 +5,8 @@ const NotFoundError = require('../errors/NotFoundError');
 const ValidationError = require('../errors/ValidationError');
 const UnauthorizedError = require('../errors/UnauthorizedError');
 const User = require('../models/user');
-const { ERROR_MESSAGES, DEV_SECRET_KEY } = require('../utils/constants');
+const { ERROR_MESSAGES } = require('../utils/constants');
+const { DEFAULT_CONFIG } = require('../utils/config');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 
@@ -53,7 +54,7 @@ const login = (req, res, next) => {
             throw new UnauthorizedError(ERROR_MESSAGES.INCORRECT_LOGIN_OR_PASSWORD);
           }
 
-          const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : DEV_SECRET_KEY, { expiresIn: '7d' });
+          const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : DEFAULT_CONFIG.DEV_SECRET_KEY, { expiresIn: '7d' });
 
           res.send({ token });
         });
