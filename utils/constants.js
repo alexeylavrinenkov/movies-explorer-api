@@ -12,6 +12,7 @@ const ERROR_MESSAGES = {
   MOVIE_NOT_FOUND: 'Фильм не найден.',
   INCORRECT_MOVIE_ID: 'Некорректный id фильма.',
   STRANGER_MOVIE: 'Удаление или изменение чужого фильма.',
+  CREATE_MOVIE_ERROR: 'При создании фильма произошла ошибка.',
   INTERNAL_SERVER_ERROR: 'На сервере произошла ошибка.',
   PAGE_NOT_FOUND: 'Страница по указанному маршруту не найдена.',
 };

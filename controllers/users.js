@@ -16,10 +16,6 @@ const createUser = (req, res, next) => {
   bcrypt.hash(password, 10)
     .then((hash) => User.create({ name, email, password: hash }))
     .then((user) => {
-      if (!user) {
-        throw new NotFoundError();
-      }
-
       res.send({
         _id: user._id,
         name: user.name,
@@ -98,6 +94,10 @@ const updateMe = (req, res, next) => {
       return res.send({ data: user });
     })
     .catch((err) => {
+      if (err.code === 11000) {
+        return next(new ConflictError(ERROR_MESSAGES.USER_ALREADY_EXISTS));
+      }
+
       if (err.name === 'ValidationError') {
         return next(new ValidationError(ERROR_MESSAGES.PROFILE_UPDATE_ERROR));
       }

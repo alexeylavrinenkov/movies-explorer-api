@@ -42,7 +42,7 @@ const createMovie = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        return next(new ValidationError(ERROR_MESSAGES.PROFILE_UPDATE_ERROR));
+        return next(new ValidationError(ERROR_MESSAGES.CREATE_MOVIE_ERROR));
       }
 
       return next(err);
