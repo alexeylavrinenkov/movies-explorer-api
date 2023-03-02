@@ -3,6 +3,9 @@
 
 ![Сервис Movies Explorer](https://user-images.githubusercontent.com/100028583/220186543-8d8f2041-47a3-4f82-adc0-31066b84f7ed.png)
 
+## Ссылки
+* API-сервер: https://api.movies-explorer.site.nomoredomains.work
+
 ## Функционал
 * Авторизация и регистрация пользователей
 * Редактирование своего профиля
