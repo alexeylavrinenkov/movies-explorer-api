@@ -5,7 +5,9 @@ const Movie = require('../models/movie');
 const { ERROR_MESSAGES } = require('../utils/constants');
 
 const getMovies = (req, res, next) => {
-  Movie.find({})
+  const owner = req.user._id;
+
+  Movie.find({ owner })
     .populate('owner')
     .then((movies) => {
       res.send(movies);
